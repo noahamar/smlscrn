@@ -1,0 +1,5 @@
+# Smlscrn
+
+License
+===============
+MIT
