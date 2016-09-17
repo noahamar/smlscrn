@@ -3,10 +3,11 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { createMemoryHistory, match, RouterContext } from 'react-router';
 import { Provider } from 'react-redux';
-import createRoutes from 'routes';
-import configureStore from 'store/configureStore';
-import preRenderMiddleware from 'middlewares/preRenderMiddleware';
-import header from 'components/Meta';
+
+import createRoutes from './routes';
+import configureStore from './store';
+import preRenderMiddleware from './middlewares/preRenderMiddleware';
+import header from './components/Meta/Meta';
 
 const clientConfig = {
   host: process.env.HOSTNAME || 'localhost',
@@ -53,12 +54,12 @@ export default function render(req, res) {
   const authenticated = req.isAuthenticated();
   const history = createMemoryHistory();
   const store = configureStore({
-    user: {
-      authenticated,
-      isWaiting: false,
-      message: '',
-      isLogin: true
-    }
+    // user: {
+    //   authenticated,
+    //   isWaiting: false,
+    //   message: '',
+    //   isLogin: true
+    // }
   }, history);
   const routes = createRoutes(store);
 

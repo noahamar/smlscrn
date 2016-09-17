@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import App from 'containers/App';
+import Home from '../home/Home';
 
 /*
  * @param {Redux Store}
@@ -10,6 +10,6 @@ import App from 'containers/App';
  */
 export default (store) => {
   return (
-    <Route path="/" component={App}></Route>
+    <Route path="/" component={Home}></Route>
   );
 };
