@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var assetsPath = path.join(__dirname, '..', 'public', 'assets');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var commonLoaders = [
   {
@@ -24,17 +25,21 @@ var commonLoaders = [
     test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
     loader: 'url',
     query: {
-        name: '[hash].[ext]',
-        limit: 10000,
+      name: '[hash].[ext]',
+      limit: 10000,
     }
   },
   { 
     test: /\.html$/, 
     loader: 'html-loader'
   },
+  // {
+  //   test: /\.styl$/,
+  //   loader: 'css-loader!stylus-loader'
+  // },
   {
     test: /\.styl$/,
-    loader: 'css-loader!stylus-loader'
+    loader: ExtractTextPlugin.extract('style-loader', 'css-loader!stylus-loader')
   },
 ];
 
@@ -72,10 +77,10 @@ module.exports = {
       __DEVCLIENT__: false,
       __DEVSERVER__: true
     }),
-    new webpack.IgnorePlugin(/vertx/)
+    new webpack.IgnorePlugin(/vertx/),
+    new ExtractTextPlugin('styles/main.css', { allChunks: true }),
   ],
   stylus: {
     use: [require('nib')()],
-    import: ['~nib/lib/nib/index.styl']
   }
 };
