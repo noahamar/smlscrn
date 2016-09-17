@@ -99,18 +99,18 @@ module.exports = [
       extensions: ['', '.js', '.jsx', '.css']
     },
     plugins: [
-        // extract inline css from modules into separate files
-        new ExtractTextPlugin('styles/main.css', { allChunks: true }),
-        new webpack.optimize.UglifyJsPlugin({
-          compressor: {
-            warnings: false
-          }
-        }),
-        new webpack.DefinePlugin({
-          __DEVCLIENT__: false,
-          __DEVSERVER__: false
-        }),
-        new InlineEnviromentVariablesPlugin({ NODE_ENV: 'production' })
+      // extract inline css from modules into separate files
+      new ExtractTextPlugin('styles/main.css', { allChunks: true }),
+      new webpack.optimize.UglifyJsPlugin({
+        compressor: {
+          warnings: false
+        }
+      }),
+      new webpack.DefinePlugin({
+        __DEVCLIENT__: false,
+        __DEVSERVER__: false
+      }),
+      new InlineEnviromentVariablesPlugin({ NODE_ENV: 'production' })
     ],
     postcss: postCSSConfig
   }, {

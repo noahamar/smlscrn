@@ -1,0 +1,34 @@
+@import 'nib'
+
+.MenuButton
+  width 54px
+  height 54px
+  border-radius 6px
+  background linear-gradient(to bottom, #fff 0%, #eaeaea 100%)
+  box-shadow 0px 1px 0px 0px rgba(0,0,0,0.3), 0px 3px 10px 0px rgba(0,0,0,0.2)
+  transition all 0.1s ease
+  cursor pointer
+
+  &:hover
+    transform translateY(-1px)
+    box-shadow 0px 2px 0px 0px rgba(0,0,0,0.3), 0px 4px 14px 0px rgba(0,0,0,0.2)
+
+  &:active
+    transform translateY(1px)
+    box-shadow 0px 0px 0px 0px rgba(0,0,0,0.3), 0px 1px 6px 0px rgba(0,0,0,0.2)
+
+  &__ridges
+    margin 0
+    padding 11px 9px
+    list-style none
+
+  &__ridge
+    margin 0
+    margin-bottom 4px
+    height 8px
+    border-radius 10px
+    background linear-gradient(to bottom, #fff 0%, #bababa 100%)
+
+  &__ridge:last-child
+    margin-bottom 0
+
