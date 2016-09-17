@@ -1,9 +1,9 @@
 {
     "verbose": false,
     "watch": [
-      "src/client/server.jsx",
-      "src/client/routes.jsx",
-      "src/client/helmconfig.js",
+      "src/client/app/server.js",
+      "src/client/app/routes.js",
+      "src/client/app/helmconfig.js",
       "src/client/components/Meta.jsx",
       "src/server",
       "webpack/webpack.config.dev-client.js",
