@@ -37,9 +37,10 @@ var commonLoaders = [
         limit: 10000,
     }
   },
-  { test: /\.css$/,
+  {
+    test: /\.css$/,
     loader: ExtractTextPlugin.extract('style-loader', 'css-loader?module!postcss-loader')
-  }
+  },
 ];
 
 var postCSSConfig = function () {

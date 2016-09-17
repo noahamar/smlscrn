@@ -112,6 +112,7 @@ export default function render(req, res) {
               ${header.title.toString()}
               ${header.meta.toString()}
               ${header.link.toString()}
+              <link rel="stylesheet" href="/assets/styles/main.css" />
             </head>
             <body>
               <div id="app"><div>${componentHTML}</div></div>

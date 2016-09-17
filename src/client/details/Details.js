@@ -95,7 +95,7 @@ export default class Details extends React.Component {
     return (
       <div class="Details">
 
-        <Helmet title="SMLSCRN - Details"></Helmet>
+        <Helmet title="Smlscrn - Details"></Helmet>
 
         <div class="Details__top-wrapper">
 

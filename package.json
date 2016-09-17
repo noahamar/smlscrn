@@ -91,6 +91,7 @@
     "inline-environment-variables-webpack-plugin": "1.1.0",
     "invariant": "^2.2.1",
     "isomorphic-fetch": "^2.2.1",
+    "isomorphic-style-loader": "^1.0.0",
     "json-loader": "^0.5.4",
     "kerberos": "0.0.21",
     "lodash": "^4.14.1",
