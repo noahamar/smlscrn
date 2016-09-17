@@ -1,7 +1,8 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route, IndexRoute, Redirect } from 'react-router';
 
 import Home from '../home/Home';
+import Details from '../details/Details';
 
 /*
  * @param {Redux Store}
@@ -9,7 +10,9 @@ import Home from '../home/Home';
  * state from the store after it has been authenticated.
  */
 export default (store) => {
-  return (
-    <Route path="/" component={Home}></Route>
-  );
+  return ([
+    <Route key="0" path="/" component={Home} />,
+    <Route key="1" path="/tv/:mediaId" component={Details} />,
+    <Redirect key="2" from="*" to="/" />,
+  ]);
 };

@@ -52,3 +52,6 @@ routesConfig(app);
 app.get('*', App.default);
 
 app.listen(app.get('port'));
+
+// suppress console.log output
+console.log = function() {}

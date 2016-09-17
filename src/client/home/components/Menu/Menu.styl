@@ -1,0 +1,75 @@
+@import 'nib'
+
+.Menu
+  absolute top left bottom right
+  position fixed
+  pointer-events none
+  // display none
+
+  // &--show
+  //   display block
+
+  &__background
+    absolute top left bottom right
+    background rgba(0,0,0,0.3)
+    opacity 0
+    pointer-events none
+
+  &__wrapper
+    position relative
+    width 300px
+    height 100%
+    left -340px
+    padding-top 20px
+    background linear-gradient(to bottom, #fff 0%, #eaeaea 100%)
+    box-shadow 0px 0px 30px 0px rgba(0,0,0,0.6)
+    transition all 0.2s ease
+    pointer-events auto
+
+  &--show  &__background
+    opacity 1
+    pointer-events auto
+
+  &--show  &__wrapper
+    left 0
+
+  &__logo
+    position relative
+    height 40px
+    margin 6px 10px 35px auto
+    background-image url('assets/smlscrn-logo.svg')
+    background-repeat no-repeat
+    background-size contain
+    background-position center
+
+  &__items
+    padding 0
+    margin 0
+    list-style none
+
+  &__item
+    font-family futura
+    font-size 1.1em
+    color #777777
+    border-bottom 1px solid #FFF
+    padding 20px
+    transition all 0.1s ease
+
+  &__item:first-child
+    border-top 1px solid #FFF
+
+  &__item:hover
+    background rgba(255,255,255,0.8)
+    cursor pointer
+
+    
+
+
+
+
+
+
+
+
+
+

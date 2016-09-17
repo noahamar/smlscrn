@@ -1,0 +1,94 @@
+@import 'nib'
+
+.PosterTile
+  // position relative
+  // display inline-block
+  // opacity 0
+  // animation-name poster-tile-animation
+  // animation-duration 0.5s
+  // animation-fill-mode forwards
+  // animation-timing-function ease
+  position relative
+  display inline-block
+
+  &:last-child
+    margin-right 0
+
+  &__image
+    width 150px
+    height 234px
+    background-image url('http://www.joblo.com/posters/images/full/Star-Trek-Beyond-poster-1-hq.jpg')
+    background-size cover
+    border-radius 6px
+    box-shadow 0px 2px 0px 0px rgba(0,0,0,0.4), 0px 3px 10px 0px rgba(0,0,0,0.4)
+    transition all 0.2s ease
+
+    &:hover
+      transform scale(1.2)
+      box-shadow 0px 2px 0px 0px rgba(0,0,0,0.4), 0px 25px 40px 5px rgba(0,0,0,0.3)
+
+  // &__link
+  //   position relative
+
+  &--clickable:hover &__atv-img-wrapper
+    cursor pointer
+
+  &--clickable:active &__atv-img-wrapper
+    transform scale(0.98)
+
+  &__info
+    absolute bottom -45px left 0 right 0
+    text-align center
+    pointer-events none
+    transition all 0.2s ease
+    transform scale(1)
+    opacity 0
+
+  &:hover &__info
+    bottom -50px
+    transform scale(1)
+    opacity 1
+
+  &__title-wrapper
+    font-family futura
+    font-size 1.2em
+    color #4e4e4e
+    width 1px
+    margin 0 auto
+
+  &__title
+    relative left -150px
+    width 300px
+    margin-bottom 3px
+    font-family futura
+    color #4e4e4e
+    white-space no-wrap
+    overflow ellipsis
+
+  &:first-child &__title
+    relative left -110px
+    width 220px
+
+  &__stars
+    position relative
+    height 26px
+    width 134px
+    background-repeat no-repeat
+    transition opacity 0.2s ease
+    opacity 0
+
+  &__stars--grey
+    position absolute
+    left 9px
+    bottom 6px
+    margin 0 auto
+    // background-image url('assets/stars-grey.svg')
+
+  &__stars--orange
+    width 50%
+    // background-image url('assets/stars-orange.svg')
+
+  &:hover &__stars
+    opacity 1
+
+

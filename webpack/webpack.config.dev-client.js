@@ -16,7 +16,7 @@ var commonLoaders = [
     // https://github.com/gaearon/react-transform-hmr/issues/5#issuecomment-142313637
     query: {
       presets: ['react-hmre', 'es2015', 'react', 'stage-0'],
-      plugins: ['transform-decorators-legacy']
+      plugins: ['react-html-attrs', 'transform-decorators-legacy']
     },
     include: path.join(__dirname, '..', 'src', 'client'),
     exclude: path.join(__dirname, '..', 'node_modules')
@@ -25,11 +25,18 @@ var commonLoaders = [
     test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
     loader: 'url',
     query: {
-        name: '[hash].[ext]',
-        limit: 10000,
+      name: '[hash].[ext]',
+      limit: 10000,
     }
   },
-  { test: /\.html$/, loader: 'html-loader' }
+  { 
+    test: /\.html$/, 
+    loader: 'html-loader'
+  },
+  {
+    test: /\.styl$/,
+    loader: 'style-loader!css-loader!stylus-loader'
+  },
 ];
 
 // var postCSSConfig = function () {
@@ -46,67 +53,70 @@ var commonLoaders = [
 // };
 
 module.exports = {
-    // eval - Each module is executed with eval and //@ sourceURL.
-    devtool: 'eval',
-    // The configuration for the client
-    name: 'browser',
-    /* The entry point of the bundle
-     * Entry points for multi page app could be more complex
-     * A good example of entry points would be:
-     * entry: {
-     *   pageA: "./pageA",
-     *   pageB: "./pageB",
-     *   pageC: "./pageC",
-     *   adminPageA: "./adminPageA",
-     *   adminPageB: "./adminPageB",
-     *   adminPageC: "./adminPageC"
-     * }
-     *
-     * We can then proceed to optimize what are the common chunks
-     * plugins: [
-     *  new CommonsChunkPlugin("admin-commons.js", ["adminPageA", "adminPageB"]),
-     *  new CommonsChunkPlugin("common.js", ["pageA", "pageB", "admin-commons.js"], 2),
-     *  new CommonsChunkPlugin("c-commons.js", ["pageC", "adminPageC"]);
-     * ]
-     */
-    context: path.join(__dirname, '..', 'src', 'client'),
-    // Multiple entry with hot loader
-    // https://github.com/glenjamin/webpack-hot-middleware/blob/master/example/webpack.config.multientry.js
-    entry: {
-      client: ['./app/client.js', hotMiddlewareScript]
-    },
-    output: {
-      // The output directory as absolute path
-      path: assetsPath,
-      // The filename of the entry chunk as relative path inside the output.path directory
-      filename: '[name].js',
-      // The output path from the view of the Javascript
-      publicPath: '/assets/'
-    },
-    module: {
-      loaders: commonLoaders.concat([
-        // {
-        //   test: /\.css$/,
-        //   loader: 'style!css?module&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
-        // }
-      ])
-    },
-    resolve: {
-      root: [path.join(__dirname, '..', 'src', 'client')],
-      extensions: ['', '.js', '.jsx', '.css'],
-    },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
-        new webpack.DefinePlugin({
-          __DEVCLIENT__: true,
-          __DEVSERVER__: false
-        }),
-        // new styleLintPlugin({
-        //   configFile: path.join(__dirname, '..', '.stylelintrc'),
-        //   context: path.join(__dirname, '..', 'src', 'client'),
-        //   files: '**/*.?(sa|sc|c)ss'
-        // })
-    ],
-    // postcss: postCSSConfig
+  // eval - Each module is executed with eval and //@ sourceURL.
+  devtool: 'eval',
+  // The configuration for the client
+  name: 'browser',
+  /* The entry point of the bundle
+   * Entry points for multi page app could be more complex
+   * A good example of entry points would be:
+   * entry: {
+   *   pageA: "./pageA",
+   *   pageB: "./pageB",
+   *   pageC: "./pageC",
+   *   adminPageA: "./adminPageA",
+   *   adminPageB: "./adminPageB",
+   *   adminPageC: "./adminPageC"
+   * }
+   *
+   * We can then proceed to optimize what are the common chunks
+   * plugins: [
+   *  new CommonsChunkPlugin("admin-commons.js", ["adminPageA", "adminPageB"]),
+   *  new CommonsChunkPlugin("common.js", ["pageA", "pageB", "admin-commons.js"], 2),
+   *  new CommonsChunkPlugin("c-commons.js", ["pageC", "adminPageC"]);
+   * ]
+   */
+  context: path.join(__dirname, '..', 'src', 'client'),
+  // Multiple entry with hot loader
+  // https://github.com/glenjamin/webpack-hot-middleware/blob/master/example/webpack.config.multientry.js
+  entry: {
+    client: ['./app/client.js', hotMiddlewareScript]
+  },
+  output: {
+    // The output directory as absolute path
+    path: assetsPath,
+    // The filename of the entry chunk as relative path inside the output.path directory
+    filename: '[name].js',
+    // The output path from the view of the Javascript
+    publicPath: '/assets/'
+  },
+  module: {
+    loaders: commonLoaders.concat([
+      // {
+      //   test: /\.css$/,
+      //   loader: 'style!css?module&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
+      // }
+    ])
+  },
+  resolve: {
+    root: [path.join(__dirname, '..', 'src', 'client')],
+    extensions: ['', '.js', '.jsx', '.css', '.styl'],
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      __DEVCLIENT__: true,
+      __DEVSERVER__: false
+    }),
+    // new styleLintPlugin({
+    //   configFile: path.join(__dirname, '..', '.stylelintrc'),
+    //   context: path.join(__dirname, '..', 'src', 'client'),
+    //   files: '**/*.?(sa|sc|c)ss'
+    // })
+  ],
+  // postcss: postCSSConfig
+  stylus: {
+    use: [require('nib')()],
+  }
 };
