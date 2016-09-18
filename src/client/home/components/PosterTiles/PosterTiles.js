@@ -20,8 +20,12 @@ export default class PosterTiles extends React.Component {
     //   delay = 0.05 * data.numInPage;
     // }
     return (
-      <div key={i} class="PosterTiles__poster-tile-wrapper" style={{animationDelay: delay + 's'}}>
-        <PosterTile data={{...data, clickable: true, to: '/tv/123'}} />
+      <div key={i} class="PosterTiles__poster-tile-wrapper" style={{animationDelay: `${delay}s`}}>
+        <PosterTile data={{
+          ...data, 
+          clickable: true, 
+          to: `/tv/${data.mediaId}`
+        }} />
       </div>);
   }
 

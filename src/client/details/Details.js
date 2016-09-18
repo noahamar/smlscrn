@@ -37,6 +37,7 @@ export default class Details extends React.Component {
       'Disney',
       'Fox News',
       'CW',
+      'HBO',
       'Discovery',
       'History',
       'HGTV',
@@ -56,12 +57,18 @@ export default class Details extends React.Component {
       'SpikeTV',
       'Comedy Central',
       'FXX',
+      'CC.com',
     ]
   }
 
   componentWillMount() {
-    this.props.dispatch(actionCreators.fetchMediaItem('tv', this.props.params.mediaId));
     this.bound = bindActionCreators(actionCreators, this.props.dispatch);
+  }
+
+  componentDidMount() {
+    if (!this.props.details.isFetching) {
+      this.props.dispatch(actionCreators.fetchMediaItem('tv', this.props.params.mediaId));
+    }
   }
 
   processShowDomainName(url) {

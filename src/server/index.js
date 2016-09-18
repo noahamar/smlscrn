@@ -1,11 +1,10 @@
 import express from 'express';
 import webpack from 'webpack';
-import { ENV } from './config/appConfig';
+import { ENV } from './config/config';
 import expressConfig from './config/express';
 import routesConfig from './config/routes';
 const App = require('../../public/assets/server');
 const app = express();
-
 
 /*
  * Configure webpack dev middleware (development only)
@@ -47,4 +46,4 @@ app.listen(app.get('port'));
 /*
  * Suppress console.log output after starting server
  */
-console.log = function(){};
+// console.log = function(){};
