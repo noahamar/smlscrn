@@ -113,9 +113,11 @@ export default class Home extends React.Component {
 
   render() {
     const showScrollLoading = this.props.home.isFetching && this.props.home.page;
-    // const showScrollLoading = true;
     return (
       <div class="Home">
+
+        <Helmet title="Smlscrn"></Helmet>
+
         <div class={classNames('Home__wrapper', {'Home__wrapper--blur': this.props.home.isShowMenu})}>
           <GitHubBanner />
           <Nav 
