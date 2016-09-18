@@ -3,7 +3,7 @@
     "watch": [
       "src/client/app/server.js",
       "src/client/app/routes.js",
-      "src/client/app/helmconfig.js",
+      "src/client/app/config.js",
       "src/client/components/Meta.jsx",
       "src/server",
       "webpack/webpack.config.dev-client.js",
