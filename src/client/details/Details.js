@@ -10,7 +10,6 @@ import { Link } from 'react-router';
 import * as actionCreators from './Details-actionCreators';
 import * as actionTypes from './Details-actionTypes';
 
-import '../common/Common.styl';
 import './Details.styl';
 import BackdropGallery from './components/BackdropGallery/BackdropGallery';
 import GitHubBanner from '../common/components/GitHubBanner/GitHubBanner';
@@ -167,16 +166,16 @@ export default class Details extends React.Component {
                   <div class="Details__fact-value">{item.runtime} min{ (item.runtime && item.runtime > 1) ? 's' : '' }</div>
                 </div>
               </TD>
-              <TD if={Boolean(item.rating)}>
-                <div class="Details__fact">
-                  <div class="Details__fact-label">Rating</div>
-                  <div class="Details__fact-value">{item.rating}</div>
-                </div>
-              </TD>
               <TD if={Boolean(item.network)}>
                 <div class="Details__fact">
                   <div class="Details__fact-label">Network</div>
                   <div class="Details__fact-value">{item.network}</div>
+                </div>
+              </TD>
+              <TD if={Boolean(item.releaseDate)}>
+                <div class="Details__fact">
+                  <div class="Details__fact-label">Released</div>
+                  <div class="Details__fact-value">{item.releaseDate}</div>
                 </div>
               </TD>
             </div>

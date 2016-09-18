@@ -2,7 +2,7 @@
   "name": "smlscrn",
   "version": "1.0.0",
   "description": "A disgustingly simple way to see what's playing on various streaming services.",
-  "repository": "",
+  "repository": "https://github.com/noahamar/smlscrn",
   "main": "index.js",
   "scripts": {
     "babel": "babel --presets es2015,stage-0 --ignore node_modules,public",

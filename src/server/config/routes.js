@@ -20,9 +20,9 @@ export default (app) => {
       }
     };
 
-    console.log('running /api/shows');
-    console.log(tmdbUri);
-    console.log(params);
+    // console.log('running /api/shows');
+    // console.log(tmdbUri);
+    // console.log(params);
 
     axios.get(tmdbUri, params)
       .then(res2 => {
@@ -45,9 +45,9 @@ export default (app) => {
       }
     };
 
-    console.log('running /api/show/:mediaId');
-    console.log(tmdbUri);
-    console.log(params);
+    // console.log('running /api/show/:mediaId');
+    // console.log(tmdbUri);
+    // console.log(params);
 
     axios.get(tmdbUri, params)
       .then(res2 => {

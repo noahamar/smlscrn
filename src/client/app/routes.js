@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute, Redirect } from 'react-router';
 
+import App from './App';
 import Home from '../home/Home';
 import Details from '../details/Details';
 
@@ -10,9 +11,11 @@ import Details from '../details/Details';
  * state from the store after it has been authenticated.
  */
 export default (store) => {
-  return ([
-    <Route key="0" path="/" component={Home} />,
-    <Route key="1" path="/tv/:mediaId" component={Details} />,
-    <Redirect key="2" from="*" to="/" />,
-  ]);
+  return (
+    <Route path="/" component={App}>
+      <IndexRoute component={Home} />
+      <Route path="tv/:mediaId" component={Details} />
+      <Redirect from="*" to="/" />
+    </Route>
+  );
 };

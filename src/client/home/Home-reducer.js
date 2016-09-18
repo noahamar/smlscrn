@@ -61,9 +61,11 @@ export default (state=INITIAL_STATE, action) => {
               mediaType: 'tv',
               mediaId: item.id,
               title: item.name,
+              poster_path: item.poster_path,
               img: `https://image.tmdb.org/t/p/w185${item.poster_path}`,
               rating: Math.round(item.vote_average)/2
             }})
+          .filter(item => item.poster_path)
           .map(R.toPairs);
 
         state = {

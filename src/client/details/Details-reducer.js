@@ -7,11 +7,11 @@ export default (state=INITIAL_STATE, action) => {
 
   switch (action.type) {
 
-    // case LOCATION_CHANGE:
-    //   if (action.payload.pathname === '/') {
-    //     state = INITIAL_STATE;
-    //   }
-    //   break;
+    case LOCATION_CHANGE:
+      if (action.payload.pathname === '/') {
+        state = INITIAL_STATE;
+      }
+      break;
 
     case actionTypes.FETCH_MEDIA_ITEM_FULFILLED:
 
@@ -46,6 +46,13 @@ export default (state=INITIAL_STATE, action) => {
           .map(item => item.name)
           .join('');
 
+        let releaseDate = '';
+        if (res.data.first_air_date) {
+          releaseDate = new Date(res.data.first_air_date)
+            .getFullYear()
+            .toString();
+        };
+
         const mediaItem = {
           id: `tv|${res.data.id}`,
           mediaType: 'tv',
@@ -53,6 +60,7 @@ export default (state=INITIAL_STATE, action) => {
           backdropImgs: backdropImgs,
           img: img,
           title: res.data.name,
+          releaseDate: releaseDate,
           score: Math.round(res.data.vote_average)/2,
           numSeasons: res.data.number_of_seasons,
           numEpisodes: res.data.number_of_episodes,

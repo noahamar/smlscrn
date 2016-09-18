@@ -9,7 +9,6 @@ import { bindActionCreators } from 'redux'
 import * as actionCreators from './Home-actionCreators';
 import * as actionTypes from './Home-actionTypes';
 
-import '../common/Common.styl';
 import './Home.styl';
 import Nav from './components/Nav/Nav';
 import PosterTiles from './components/PosterTiles/PosterTiles';
