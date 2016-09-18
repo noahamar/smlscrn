@@ -2,22 +2,9 @@ import R from 'ramda';
 import { LOCATION_CHANGE } from 'react-router-redux';
 
 import * as actionTypes from './Home-actionTypes';
-import * as constants from './Home-constants';
+import { INITIAL_STATE } from './Home-constants';
 
-const initialState = {
-  scrollPosition: 0,
-  isShowMenu: false,
-  isFetching: false,
-  loadType: null,
-  page: 0,
-  items: [],
-  sortByOptions: constants.SORT_BY_OPTIONS.map(R.toPairs),
-  genreOptions: constants.GENRE_OPTIONS.map(R.toPairs),
-  selectedSortBy: constants.SELECTED_SORT_BY,
-  selectedGenre: constants.SELECTED_GENRE,
-};
-
-export default (state=initialState, action) => {
+export default (state=INITIAL_STATE, action) => {
 
   switch (action.type) {
 
@@ -34,7 +21,7 @@ export default (state=initialState, action) => {
     case actionTypes.CHANGE_FILTER_SORT_BY:
       state = {
         ...state, 
-        ...initialState, 
+        ...INITIAL_STATE, 
         selectedGenre: state.selectedGenre, 
         selectedSortBy: action.payload
       };
@@ -43,7 +30,7 @@ export default (state=initialState, action) => {
     case actionTypes.CHANGE_FILTER_GENRE:
       state = {
         ...state, 
-        ...initialState, 
+        ...INITIAL_STATE, 
         selectedGenre: action.payload, 
         selectedSortBy: state.selectedSortBy
       };
@@ -61,9 +48,9 @@ export default (state=initialState, action) => {
 
       const res = action.payload;
 
-      if (res.status === 200) {
+      if (res.status === 200 && res.data.results) {
 
-        const page = state.page+1;
+        const page = res.data.page;
 
         const items = res.data.results
           .map((item, i) => {
@@ -82,6 +69,7 @@ export default (state=initialState, action) => {
         state = {
           ...state, 
           loadType: 'fetch',
+          date: Date.now(),
           page: page, 
           items: state.items.concat(items)
         };

@@ -1,37 +1,15 @@
-import R from 'ramda';
 import { LOCATION_CHANGE } from 'react-router-redux';
 
 import * as actionTypes from './Details-actionTypes';
-import * as constants from './Details-constants';
+import { INITIAL_STATE } from './Details-constants';
 
-const initialState = {
-  isFetching: false,
-  mediaItem: {
-    id: '',
-    mediaType: '',
-    mediaId: '',
-    backdropImgs: [],
-    img: '',
-    title: '',
-    score: 0,
-    numSeasons: 0,
-    numEpisodes: 0,
-    url: '',
-    genres: [],
-    runtime: 0,
-    rating: '',
-    network: '',
-    overview: '',
-  }
-};
-
-export default (state=initialState, action) => {
+export default (state=INITIAL_STATE, action) => {
 
   switch (action.type) {
 
     // case LOCATION_CHANGE:
     //   if (action.payload.pathname === '/') {
-    //     state = initialState;
+    //     state = INITIAL_STATE;
     //   }
     //   break;
 
@@ -59,7 +37,9 @@ export default (state=initialState, action) => {
 
         const rating = res.data.content_ratings.results
           .filter(item => item.iso_3166_1 === 'US')
-          .map(item => item.rating);
+          .slice(0, 1)
+          .map(item => item.rating)
+          .join('');
 
         const network = res.data.networks
           .slice(0, 1)

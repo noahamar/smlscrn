@@ -32,14 +32,14 @@ export default class Home extends React.Component {
     // create bound action creators
     this.bound = bindActionCreators(actionCreators, this.props.dispatch)
 
+  }
+
+  componentDidMount() {
+
     // check if need initial items
     if (!this.props.home.items.length) {
       this.fetchItems();
     }
-
-  }
-
-  componentDidMount() {
 
     // get component element
     this.compElem = $(ReactDOM.findDOMNode(this));
@@ -54,18 +54,22 @@ export default class Home extends React.Component {
     });
 
     // fetch more items if near bottom
+    this.lastFetchScrollHeight = 0;
     this.compElem.on('scroll', () => {
-      this.handleInfiniteScroll()
-    })
+      this.handleInfiniteScroll();
+    });
 
   }
 
   handleInfiniteScroll(i) {
     const buffer = 500;
+    const scrollHeight = this.compElem[0].scrollHeight;
     const a = this.compElem.scrollTop() + this.compElem.innerHeight();
-    const b = this.compElem[0].scrollHeight - buffer;
+    const b = scrollHeight - buffer;
     if (a >= b) {
-      if (!this.props.home.isFetching) {
+      const last = this.lastFetchScrollHeight;
+      if (last !== scrollHeight) {
+        this.lastFetchScrollHeight = scrollHeight;
         this.fetchItems();
       }
     }
@@ -73,13 +77,10 @@ export default class Home extends React.Component {
 
   checkIfNeedMoreItems(i) {
     setTimeout(() => {
-      // console.log('fired');
       const buffer = 500;
       const a = this.compElem[0].scrollHeight;
       const b = this.compElem[0].clientHeight + buffer;
-      // console.log(a, b);
       if (a <= b) {
-        // console.log('Need more!', !this.props.home.isFetching);
         if (!this.props.home.isFetching) {
           this.fetchItems();
         }
@@ -93,14 +94,16 @@ export default class Home extends React.Component {
   fetchItems() {
 
     // dispatach action
-    this.props.dispatch(actionCreators.fetchMediaItems(
-      this.props.selectedSortBy, 
-      this.props.selectedGenre,
-      this.props.page+1
-    ));
+    setTimeout(() => {
+      this.props.dispatch(actionCreators.fetchMediaItems(
+        this.props.home.selectedSortBy, 
+        this.props.home.selectedGenre,
+        this.props.home.page+1
+      ));
+    });
 
-    // // fetch more items if needed to fill screen
-    // this.checkIfNeedMoreItems(10);
+    // fetch more items if needed to fill screen
+    this.checkIfNeedMoreItems(10);
 
   }
 
