@@ -83,6 +83,7 @@ export default (state=INITIAL_STATE, action) => {
 
     case actionTypes.TOGGLE_MENU:
       state = {...state, isShowMenu: !state.isShowMenu};
+      console.log(state);
       break;
 
   }

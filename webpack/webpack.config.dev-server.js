@@ -22,7 +22,7 @@ var commonLoaders = [
   },
   { test: /\.json$/, loader: 'json-loader' },
   {
-    test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+    test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ico)$/,
     loader: 'url',
     query: {
       name: '[hash].[ext]',
@@ -33,10 +33,6 @@ var commonLoaders = [
     test: /\.html$/, 
     loader: 'html-loader'
   },
-  // {
-  //   test: /\.styl$/,
-  //   loader: 'css-loader!stylus-loader'
-  // },
   {
     test: /\.styl$/,
     loader: ExtractTextPlugin.extract('style-loader', 'css-loader!stylus-loader')

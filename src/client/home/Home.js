@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import classNames from 'classnames';
+import classNames from 'classnames/bind';
 import Helmet from 'react-helmet';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -9,11 +9,13 @@ import { bindActionCreators } from 'redux'
 import * as actionCreators from './Home-actionCreators';
 import * as actionTypes from './Home-actionTypes';
 
-import './Home.styl';
+import styles from './Home.styl';
 import Nav from './components/Nav/Nav';
 import PosterTiles from './components/PosterTiles/PosterTiles';
 import Menu from './components/Menu/Menu';
 import GitHubBanner from '../common/components/GitHubBanner/GitHubBanner';
+
+const cx = classNames.bind(styles);
 
 @connect((store) => {
   return {
@@ -37,6 +39,7 @@ export default class Home extends React.Component {
 
     // check if need initial items
     if (!this.props.home.items.length) {
+      console.log('Calling fetching from line 40.');
       this.fetchItems();
     }
 
@@ -69,26 +72,28 @@ export default class Home extends React.Component {
       const last = this.lastFetchScrollHeight;
       if (last !== scrollHeight) {
         this.lastFetchScrollHeight = scrollHeight;
+        console.log('Calling fetching from line 72.');
         this.fetchItems();
       }
     }
   }
 
-  checkIfNeedMoreItems(i) {
-    setTimeout(() => {
-      const buffer = 500;
-      const a = this.compElem[0].scrollHeight;
-      const b = this.compElem[0].clientHeight + buffer;
-      if (a <= b) {
-        if (!this.props.home.isFetching) {
-          this.fetchItems();
-        }
-        if (--i) {
-          this.checkIfNeedMoreItems(i);
-        };
-      }
-    }, 1100);
-  }
+  // checkIfNeedMoreItems(i) {
+  //   setTimeout(() => {
+  //     const buffer = 500;
+  //     const a = this.compElem[0].scrollHeight;
+  //     const b = this.compElem[0].clientHeight + buffer;
+  //     if (a <= b) {
+  //       if (!this.props.home.isFetching) {
+  //         console.log('Calling fetching from line 85.');
+  //         this.fetchItems();
+  //       }
+  //       if (--i) {
+  //         this.checkIfNeedMoreItems(i);
+  //       };
+  //     }
+  //   }, 1100);
+  // }
 
   fetchItems() {
 
@@ -101,8 +106,8 @@ export default class Home extends React.Component {
       ));
     });
 
-    // fetch more items if needed to fill screen
-    this.checkIfNeedMoreItems(10);
+    // // fetch more items if needed to fill screen
+    // this.checkIfNeedMoreItems(10);
 
   }
 
@@ -116,11 +121,11 @@ export default class Home extends React.Component {
   render() {
     const showScrollLoading = this.props.home.isFetching && this.props.home.page;
     return (
-      <div class="Home">
+      <div className={cx('Home')}>
 
         <Helmet title="Smlscrn"></Helmet>
 
-        <div class={classNames('Home__wrapper', {'Home__wrapper--blur': this.props.home.isShowMenu})}>
+        <div className={cx('Home__wrapper', {'Home__wrapper--blur': this.props.home.isShowMenu})}>
           <GitHubBanner />
           <Nav 
             fetchItems={this.fetchItems.bind(this)}
@@ -142,8 +147,8 @@ export default class Home extends React.Component {
             page={this.props.home.page}
             numItemsShown={this.props.home.numItemsShown}
             {...this.bound} />
-          <div class="Home__scroll-loading-wrapper">
-            <div class={classNames('Home__scroll-loading', {'Home__scroll-loading--show': showScrollLoading})}></div>
+          <div className={cx('Home__scroll-loading-wrapper')}>
+            <div className={cx('Home__scroll-loading', {'Home__scroll-loading--show': showScrollLoading})}></div>
           </div>
         </div>
         <Menu 

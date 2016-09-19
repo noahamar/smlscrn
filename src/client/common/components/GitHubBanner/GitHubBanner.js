@@ -1,7 +1,9 @@
 import React from 'react';
+import classNames from 'classnames/bind';
 
-import './GitHubBanner.styl';
-// import './assets/github-banner.png';
+import styles from './GitHubBanner.styl';
+
+const cx = classNames.bind(styles);
 
 export default class GitHubBanner extends React.Component {
 
@@ -11,7 +13,7 @@ export default class GitHubBanner extends React.Component {
 
   render() {
     return (
-      <a class="GitHubBanner" href="https://github.com" target="_blank"></a>
+      <a className={cx('GitHubBanner')} href="https://github.com/noahamar/smlscrn"></a>
     );
   }
 

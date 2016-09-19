@@ -1,9 +1,11 @@
 import $ from 'jquery';
-import classNames from 'classnames';
+import classNames from 'classnames/bind';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './BackdropGallery.styl';
+import styles from './BackdropGallery.styl';
+
+const cx = classNames.bind(styles);
 
 export default class BackdropGallery extends React.Component {
 
@@ -117,18 +119,18 @@ export default class BackdropGallery extends React.Component {
     // build array of elements based on given img URLs
     const elements = this.props.imgs
       .map((img, i) => {
-        return <img key={i} class="BackdropGallery__image" src={img} />;
+        return <img key={i} className={cx('BackdropGallery__image')} src={img} />;
       });
 
     // shuffle array of elements
     const elementsShuffled = this.shuffle(elements.slice());
 
     return (
-      <div class="BackdropGallery">
-        <div class="BackdropGallery__wrapper">
+      <div className={cx('BackdropGallery')}>
+        <div className={cx('BackdropGallery__wrapper')}>
           { elementsShuffled }
         </div>
-        <div class="BackdropGallery__overlay"></div>
+        <div className={cx('BackdropGallery__overlay')}></div>
       </div>
     );
   }

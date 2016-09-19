@@ -13,7 +13,7 @@
 // import chromecon from 'assets/chrome-ninja192-precomposed.png';
 // import applecon from 'assets/apple-ninja152-precomposed.png';
 // import mscon from 'assets/ms-ninja144-precomposed.png';
-import favicon from './assets/favicon.png';
+import favicon from './assets/favicon.ico';
 
 const config = {
   link: [
@@ -33,7 +33,7 @@ const config = {
     // Setting IE=edge tells Internet Explorer to use the latest engine to render the page and execute Javascript
     { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },
     //  Meta descriptions are commonly used on search engine result pages to display preview snippets for a given page.
-    { name: 'description', content: 'An isomorphic React alt boilerplate with Express and MongoDB deployable to Heroku' },
+    { name: 'description', content: 'A disgustingly simple way to discover TV shows playing on various streaming services.' },
     // Mobile Safari introduced this tag to let web developers control the viewport's size and scale
     // The width property controls the size of the viewport, the initial-scale property controls
     // the zoom level when the page is first loaded
@@ -43,7 +43,7 @@ const config = {
     // Add to homescreen for Safari on IOS
     { name: 'apple-mobile-web-app-capable', content: 'yes' },
     { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
-    { name: 'apple-mobile-web-app-title', content: 'React Webpack Node' },
+    { name: 'apple-mobile-web-app-title', content: 'Smlscrn' },
     // Tile icon for Win8 (144x144 + tile color)
     // { name: 'msapplication-TileImage', content: mscon },
     { name: 'msapplication-TileColor', content: '#3372DF' }

@@ -1,8 +1,11 @@
 import R from 'ramda';
 import React from 'react';
+import classNames from 'classnames/bind';
 
-import './PosterTiles.styl';
+import styles from './PosterTiles.styl';
 import PosterTile from '../../../common/components/PosterTile/PosterTile';
+
+const cx = classNames.bind(styles);
 
 export default class PosterTiles extends React.Component {
 
@@ -20,7 +23,7 @@ export default class PosterTiles extends React.Component {
     //   delay = 0.05 * data.numInPage;
     // }
     return (
-      <div key={i} class="PosterTiles__poster-tile-wrapper" style={{animationDelay: `${delay}s`}}>
+      <div key={i} className={cx('PosterTiles__poster-tile-wrapper')} style={{animationDelay: `${delay}s`}}>
         <PosterTile data={{
           ...data, 
           clickable: true, 
@@ -38,7 +41,7 @@ export default class PosterTiles extends React.Component {
       });
 
     return (
-      <div class="PosterTiles">
+      <div className={cx('PosterTiles')}>
         { this.elements }
       </div>
     );

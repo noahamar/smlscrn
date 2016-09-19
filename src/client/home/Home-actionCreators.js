@@ -19,7 +19,7 @@ export const changeFilterGenre = (genre) => {
 
 export const fetchMediaItems = (sortBy, genre, page) => {
 
-  console.log(sortBy, genre);
+  // console.log(sortBy, genre);
 
   sortBy = SORT_BY_OPTIONS.find(item => {
       return item.id === sortBy;
@@ -29,7 +29,7 @@ export const fetchMediaItems = (sortBy, genre, page) => {
       return item.id === genre;
     }).tmdbParam;
 
-  console.log(sortBy, genre);
+  // console.log(sortBy, genre);
 
   const params = {
     params: {

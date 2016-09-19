@@ -1,11 +1,11 @@
 import $ from 'jquery';
 import AtvImg from 'react-atv-img';
-import classNames from 'classnames';
+import classNames from 'classnames/bind';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 
-import './PosterTile.styl';
+import styles from './PosterTile.styl';
 import stars5  from './assets/stars-5.svg';
 import stars45 from './assets/stars-4-5.svg';
 import stars4  from './assets/stars-4.svg';
@@ -17,6 +17,8 @@ import stars15 from './assets/stars-1-5.svg';
 import stars1  from './assets/stars-1.svg';
 import stars05 from './assets/stars-0-5.svg';
 import stars0  from './assets/stars-0.svg';
+
+const cx = classNames.bind(styles);
 
 export default class PosterTile extends React.Component {
 
@@ -47,7 +49,7 @@ export default class PosterTile extends React.Component {
     const pageItem = this.props.data.pageItem;
     const delay = 0.25 + (0.05*pageItem);
 
-    this.styles = {
+    this.styles2 = {
       animationDelay: delay + 's'
     }
 
@@ -105,9 +107,9 @@ export default class PosterTile extends React.Component {
     }
 
     return (
-      <div class={classNames('PosterTile', {'PosterTile--clickable': this.props.data.clickable})} style={this.styles}>
-        <Link class="PosterTile__link" to={this.props.data.to}>
-          <div class="PosterTile__atv-img-wrapper">
+      <div className={cx('PosterTile', {'PosterTile--clickable': this.props.data.clickable})} style={this.styles2}>
+        <Link className={cx('PosterTile__link')} to={this.props.data.to}>
+          <div className={cx('PosterTile__atv-img-wrapper')}>
             <AtvImg
               layers={layers}
               staticFallback={this.props.data.img}
@@ -116,9 +118,9 @@ export default class PosterTile extends React.Component {
               style={{ width: this.width, height: this.height }} />
           </div>
         </Link>
-        <div class="PosterTile__info">
-          <div class="PosterTile__title-wrapper">
-            <div class="PosterTile__title">{this.props.data.title}</div>
+        <div className={cx('PosterTile__info')}>
+          <div className={cx('PosterTile__title-wrapper')}>
+            <div className={cx('PosterTile__title')}>{this.props.data.title}</div>
           </div>
         </div>
       </div>

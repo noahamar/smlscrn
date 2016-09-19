@@ -1,7 +1,9 @@
-import classNames from 'classnames';
 import React from 'react';
+import classNames from 'classnames/bind';
 
-import './Menu.styl';
+import styles from './Menu.styl';
+
+const cx = classNames.bind(styles);
 
 export default class Menu extends React.Component {
 
@@ -11,15 +13,15 @@ export default class Menu extends React.Component {
 
   render() {
     return (
-      <div class={classNames('Menu', { 'Menu--show': this.props.isShowMenu })}>
-        <div class="Menu__background" onClick={this.props.toggleMenu}></div>
-        <div class="Menu__wrapper">
-          <div class="Menu__logo"></div>
-          <div class="Menu__close-button"></div>
-          <ul class="Menu__items">
-            <li class="Menu__item">View on GitHub</li>
-            <li class="Menu__item">TMDb API</li>
-            <li class="Menu__item" onClick={this.props.toggleMenu}>Back</li>
+      <div className={cx('Menu', { 'Menu--show': this.props.isShowMenu })}>
+        <div className={cx('Menu__background')} onClick={this.props.toggleMenu}></div>
+        <div className={cx('Menu__wrapper')}>
+          <div className={cx('Menu__logo')}></div>
+          <div className={cx('Menu__close-button')}></div>
+          <ul className={cx('Menu__items')}>
+            <li className={cx('Menu__item')}><a className={cx('Menu__item-link')} href="https://github.com/noahamar/smlscrn">View on GitHub</a></li>
+            <li className={cx('Menu__item')}><a className={cx('Menu__item-link')} href="https://www.themoviedb.org/documentation/api">TMDb API</a></li>
+            <li className={cx('Menu__item')}><a className={cx('Menu__item-link')} onClick={this.props.toggleMenu}>Back</a></li>
           </ul>
         </div>
       </div>

@@ -113,6 +113,7 @@ export default function render(req, res) {
               ${header.meta.toString()}
               ${header.link.toString()}
               <link rel="stylesheet" href="/assets/styles/main.css" />
+              <link rel="icon" href="https://i.imgur.com/3hGdjE7.png" />
             </head>
             <body>
               <div id="app"><div>${componentHTML}</div></div>

@@ -1,6 +1,9 @@
 import React from 'react';
+import classNames from 'classnames/bind';
 
-import './MenuButton.styl';
+import styles from './MenuButton.styl';
+
+const cx = classNames.bind(styles);
 
 export default class MenuButton extends React.Component {
 
@@ -10,11 +13,11 @@ export default class MenuButton extends React.Component {
 
   render() {
     return (
-      <div class="MenuButton" onClick={this.props.onClick}>
-        <ul class="MenuButton__ridges">
-          <li class="MenuButton__ridge"></li>
-          <li class="MenuButton__ridge"></li>
-          <li class="MenuButton__ridge"></li>
+      <div className={cx('MenuButton')} onClick={this.props.onClick}>
+        <ul className={cx('MenuButton__ridges')}>
+          <li className={cx('MenuButton__ridge')}></li>
+          <li className={cx('MenuButton__ridge')}></li>
+          <li className={cx('MenuButton__ridge')}></li>
         </ul>
       </div>
     );

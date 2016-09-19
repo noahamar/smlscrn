@@ -7,6 +7,11 @@ import { TMDB_API_KEY } from './config';
  */
 export default (app) => {
 
+  app.get('/favicon.ico', function response(req, res) {
+    res.writeHead(200, {'Content-Type': 'image/x-icon'} );
+    res.end();
+  });
+
   app.get('/api/shows', function response(req, res) {
 
     const tmdbUri = 'http://api.themoviedb.org/3/discover/tv';

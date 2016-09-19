@@ -19,6 +19,7 @@ var commonLoaders = [
     query: {
       presets: ['es2015', 'react', 'stage-0'],
       plugins: [
+        'react-html-attrs',
         'transform-decorators-legacy',
         'transform-react-remove-prop-types',
         'transform-react-constant-elements',
@@ -28,30 +29,37 @@ var commonLoaders = [
     include: path.join(__dirname, '..', 'src', 'client'),
     exclude: path.join(__dirname, '..', 'node_modules')
   },
-  { test: /\.json$/, loader: 'json-loader' },
+  { 
+    test: /\.json$/, 
+    loader: 'json-loader' 
+  },
   {
-    test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+    test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ico)$/,
     loader: 'url',
     query: {
         name: '[hash].[ext]',
         limit: 10000,
     }
   },
+  // {
+  //   test: /\.css$/,
+  //   loader: ExtractTextPlugin.extract('style-loader', 'css-loader?module!postcss-loader')
+  // },
   {
-    test: /\.css$/,
-    loader: ExtractTextPlugin.extract('style-loader', 'css-loader?module!postcss-loader')
+    test: /\.styl$/,
+    loader: ExtractTextPlugin.extract('style-loader', 'css-loader!stylus-loader')
   },
 ];
 
-var postCSSConfig = function () {
-  return [
-    require('postcss-import')(),
-    require('postcss-cssnext')({
-      browsers: ['> 1%', 'last 2 versions']
-    }),
-    require('postcss-reporter')({ clearMessages: true })
-  ];
-};
+// var postCSSConfig = function () {
+//   return [
+//     require('postcss-import')(),
+//     require('postcss-cssnext')({
+//       browsers: ['> 1%', 'last 2 versions']
+//     }),
+//     require('postcss-reporter')({ clearMessages: true })
+//   ];
+// };
 
 module.exports = [
   {
@@ -80,7 +88,7 @@ module.exports = [
     devtool: 'cheap-module-source-map',
     context: path.join(__dirname, '..', 'src', 'client'),
     entry: {
-      client: './client'
+      client: './app/client.js'
     },
     output: {
       // The output directory as absolute path
@@ -97,7 +105,7 @@ module.exports = [
     },
     resolve: {
       root: [path.join(__dirname, '..', 'src', 'client')],
-      extensions: ['', '.js', '.jsx', '.css']
+      extensions: ['', '.js', '.jsx', '.css', '.styl']
     },
     plugins: [
       // extract inline css from modules into separate files
@@ -113,13 +121,16 @@ module.exports = [
       }),
       new InlineEnviromentVariablesPlugin({ NODE_ENV: 'production' })
     ],
-    postcss: postCSSConfig
+    // postcss: postCSSConfig
+    stylus: {
+      use: [require('nib')()],
+    }
   }, {
     // The configuration for the server-side rendering
     name: 'server-side rendering',
     context: path.join(__dirname, '..', 'src', 'client'),
     entry: {
-      server: './server'
+      server: './app/server.js'
     },
     target: 'node',
     output: {
@@ -136,7 +147,7 @@ module.exports = [
     },
     resolve: {
       root: [path.join(__dirname, '..', 'src', 'client')],
-      extensions: ['', '.js', '.jsx', '.css']
+      extensions: ['', '.js', '.jsx', '.css', '.styl']
     },
     plugins: [
         // Order the modules and chunks by occurrence.
@@ -156,6 +167,9 @@ module.exports = [
         new webpack.IgnorePlugin(/vertx/),
         new InlineEnviromentVariablesPlugin({ NODE_ENV: 'production' })
     ],
-    postcss: postCSSConfig
+    // postcss: postCSSConfig
+    stylus: {
+      use: [require('nib')()],
+    }
   }
 ];

@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from 'classnames/bind';
 import React from 'react';
 import Helmet from 'react-helmet';
 import TD from 'react-toggle-display';
@@ -10,10 +10,12 @@ import { Link } from 'react-router';
 import * as actionCreators from './Details-actionCreators';
 import * as actionTypes from './Details-actionTypes';
 
-import './Details.styl';
+import styles from './Details.styl';
 import BackdropGallery from './components/BackdropGallery/BackdropGallery';
 import GitHubBanner from '../common/components/GitHubBanner/GitHubBanner';
 import PosterTile from '../common/components/PosterTile/PosterTile';
+
+const cx = classNames.bind(styles);
 
 @connect((store) => {
   return {
@@ -99,30 +101,30 @@ export default class Details extends React.Component {
     const domain = this.processShowDomainName(item.url);
 
     return (
-      <div class="Details">
+      <div className={cx('Details')}>
 
         <Helmet title="Smlscrn - Details"></Helmet>
 
-        <div class="Details__top-wrapper">
+        <div className={cx('Details__top-wrapper')}>
 
           <BackdropGallery 
             imgs={item.backdropImgs} 
             isFetching={this.props.details.isFetching} />
 
           <Link to="/">
-            <div class="Details__back-button">
-              <div class="Details__back-button-arrow"></div>
+            <div className={cx('Details__back-button')}>
+              <div className={cx('Details__back-button-arrow')}></div>
             </div>
           </Link>
 
-          <div class="Details__top-info-wrapper">
-            <div class="Details__content-container Details__top-info-container">
-              <div class="Details__title">{item.title}</div>
-              <div class="Details__subtitle">
-                <div class="Details__stars Details__stars--grey">
-                  <div class="Details__stars Details__stars--orange" style={{width: (item.score*20)+"%"}}></div>
+          <div className={cx('Details__top-info-wrapper')}>
+            <div className={cx('Details__content-container', 'Details__top-info-container')}>
+              <div className={cx('Details__title')}>{item.title}</div>
+              <div className={cx('Details__subtitle')}>
+                <div className={cx('Details__stars', 'Details__stars--grey')}>
+                  <div className={cx('Details__stars', 'Details__stars--orange')} style={{width: (item.score*20)+"%"}}></div>
                 </div>
-                <div class="Details__seasons-episodes">
+                <div className={cx('Details__seasons-episodes')}>
                   <TD if={Boolean(item.numSeasons)}>
                     <span>{item.numSeasons} season{ (item.numSeasons && item.numSeasons > 1) ? 's' : '' }</span>
                   </TD>
@@ -135,12 +137,12 @@ export default class Details extends React.Component {
                 </div>
               </div>
               <TD if={Boolean(item.url)}>
-                <a class="Details__watch-button Details__watch-button--enabled" href={item.url}>Watch on {domain}</a>
+                <a className={cx('Details__watch-button', 'Details__watch-button--enabled')} href={item.url}>Watch on {domain}</a>
               </TD>
               <TD if={Boolean(!item.url)}>
-                <div class="Details__watch-button Details__watch-button--disabled">Watch info unavailable</div>
+                <div className={cx('Details__watch-button', 'Details__watch-button--disabled')}>Watch info unavailable</div>
               </TD>
-              <div class="Details__poster-tile">
+              <div className={cx('Details__poster-tile')}>
                 <PosterTile data={{width: 224, height: 336, clickable: false, img: item.img}} />
               </div>
             </div>
@@ -150,37 +152,37 @@ export default class Details extends React.Component {
 
         </div>
 
-        <div class="Details__bottom-wrapper">
-          <div class="Details__content-container">
+        <div className={cx('Details__bottom-wrapper')}>
+          <div className={cx('Details__content-container')}>
 
-            <div class="Details__facts">
+            <div className={cx('Details__facts')}>
               <TD if={Boolean(item.genres.length)}>
-                <div class="Details__fact">
-                  <div class="Details__fact-label">Genre</div>
-                  <div class="Details__fact-value">{item.genres.length ? ( item.genres.slice(0, 2).join(', ') ) : ''}</div>
+                <div className={cx('Details__fact')}>
+                  <div className={cx('Details__fact-label')}>Genre</div>
+                  <div className={cx('Details__fact-value')}>{item.genres.length ? ( item.genres.slice(0, 2).join(', ') ) : ''}</div>
                 </div>
               </TD>
               <TD if={Boolean(item.runtime)}>
-                <div class="Details__fact">
-                  <div class="Details__fact-label">Runtime</div>
-                  <div class="Details__fact-value">{item.runtime} min{ (item.runtime && item.runtime > 1) ? 's' : '' }</div>
+                <div className={cx('Details__fact')}>
+                  <div className={cx('Details__fact-label')}>Runtime</div>
+                  <div className={cx('Details__fact-value')}>{item.runtime} min{ (item.runtime && item.runtime > 1) ? 's' : '' }</div>
                 </div>
               </TD>
               <TD if={Boolean(item.network)}>
-                <div class="Details__fact">
-                  <div class="Details__fact-label">Network</div>
-                  <div class="Details__fact-value">{item.network}</div>
+                <div className={cx('Details__fact')}>
+                  <div className={cx('Details__fact-label')}>Network</div>
+                  <div className={cx('Details__fact-value')}>{item.network}</div>
                 </div>
               </TD>
               <TD if={Boolean(item.releaseDate)}>
-                <div class="Details__fact">
-                  <div class="Details__fact-label">Released</div>
-                  <div class="Details__fact-value">{item.releaseDate}</div>
+                <div className={cx('Details__fact')}>
+                  <div className={cx('Details__fact-label')}>Released</div>
+                  <div className={cx('Details__fact-value')}>{item.releaseDate}</div>
                 </div>
               </TD>
             </div>
 
-            <div class="Details__overview">
+            <div className={cx('Details__overview')}>
               {item.overview}
             </div>
 

@@ -48,20 +48,31 @@
     list-style none
 
   &__item
+    padding 0
+    border none
+
+  &__item:first-child &__item-link
+    border-top 1px solid #FFF
+
+  &__item-link
+    display inline-block
+    width 100%
     font-family futura
     font-size 1.1em
     color #777777
     border-bottom 1px solid #FFF
     padding 20px
     transition all 0.1s ease
-
-  &__item:first-child
-    border-top 1px solid #FFF
-
-  &__item:hover
-    background rgba(255,255,255,0.8)
+    text-decoration none
     cursor pointer
 
+  &__item-link:hover
+    background rgba(255,255,255,0.8)
+
+  &__item-link:active
+    transition all 0s ease
+    background rgba(224, 224, 224, 0.8)
+    color #444
     
 
 
