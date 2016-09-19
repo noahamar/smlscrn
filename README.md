@@ -68,4 +68,4 @@ Smlscrn is a [Node.js](https://nodejs.org/en/) based application. Here are the k
 
 ## License 
 
-MIT license. Go ahead and fork it! :)
+MIT license. Go ahead and fork it! :) -Noah
