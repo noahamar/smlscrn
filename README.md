@@ -1,7 +1,5 @@
 ![Smlscrn logo](http://i.imgur.com/QUaSArn.png "Smlscrn logo")
 
-# Smlscrn
-
 **Smlscrn** is a simple web application that helps users discover TV shows worth watching and where to watch them. It's designed to be easily used on a TV screen. Data is provided by [**TMDb**](https://www.themoviedb.org/).
 
 ![Home](http://i.imgur.com/DzUOOp6.jpg "Home")
