@@ -2,7 +2,7 @@
 
 # Smlscrn
 
-**Smlscrn** is a simple web application that helps users discover TV shows worth watching and where to watch them using data from TMDb. It's designed to be easily used on a TV screen.
+**Smlscrn** is a simple web application that helps users discover TV shows worth watching and where to watch them. It's designed to be easily used on a TV screen. Data is provided by [**TMDb**](https://www.themoviedb.org/).
 
 
 ### Live demo
@@ -12,9 +12,9 @@ You can see a live demo here: **https://smlscrn-app.appspot.com**
 
 ## Deployment
 
-To deploy the application, you'll need an API key from [**TMDb**](https://www.themoviedb.org/). You can get one [**here**](https://www.themoviedb.org/documentation/api).
+To deploy the application, you'll need an API key from TMDb. You can get one [**here**](https://www.themoviedb.org/documentation/api).
 
-After cloning the project, create a file called .env in the root directory, and add your API key as the value for `TMDB_API_KEY`.
+After cloning the project, create a file called `.env` in the root directory, and add your API key as the value for `TMDB_API_KEY`.
 
 
 ```
@@ -22,7 +22,7 @@ After cloning the project, create a file called .env in the root directory, and 
 TMDB_API_KEY=YOURAPIKEY
 ```
 
-At runtime, the app uses [**dotenv**](https://github.com/motdotla/dotenv) to import values inside `.env` as an environment variables. Since this file can have sensitive data, make sure to never commit it. The filename is included in the `.gitingore` so you should be fine. You can learn more about dotenv here.
+At runtime, the application uses [**dotenv**](https://github.com/motdotla/dotenv) to import values inside `.env` as an environment variables. Since this file can have sensitive data, make sure to never commit it. The filename is included in the `.gitingore` so you should be fine. You can learn more about dotenv [**here**](https://github.com/motdotla/dotenv#faq).
 
 #### Development 
 
@@ -56,7 +56,7 @@ Smlscrn is a [Node.js](https://nodejs.org/en/) based application. Here are the k
 - [**Functional**](https://medium.com/@chetcorcos/functional-programming-for-javascript-people-1915d8775504) for reusable, composable Javascript.
 - [**Immutable**](https://medium.com/@chetcorcos/functional-programming-for-javascript-people-1915d8775504) for consistent and predictable Javascript.
 - [**React**](https://facebook.github.io/react/)/[**Redux**](http://redux.js.org/) for simple, declarative UI development and predictable state management.
-- [**Server-side rendering**](https://medium.com/@jeffwhelpley/use-cases-for-server-side-rendering-2fc6389b3f7d) for faster client-side loading.
+- [**Server-side rendering**](https://medium.com/@jeffwhelpley/use-cases-for-server-side-rendering-2fc6389b3f7d) for fast client-side loading.
 - [**Webpack**](https://webpack.github.io/) for module bundling and hot-loading.
 - [**Express**](https://expressjs.com/) for routing and REST API endpoints.
 - [**Stylus**](http://stylus-lang.com/) CSS preprocessing for expressive, dynamic styling. 
