@@ -1,4 +1,4 @@
-![Smlscrn logo](https://i.imgur.com/zTlQ0HI.png "Smlscrn logo")
+![Smlscrn logo](http://i.imgur.com/QUaSArn.png "Smlscrn logo")
 
 # Smlscrn
 
