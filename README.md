@@ -21,7 +21,7 @@ After cloning the project, create a file called `.env` in the root directory, an
 TMDB_API_KEY=YOURAPIKEY
 ```
 
-At runtime, the application uses [**dotenv**](https://github.com/motdotla/dotenv) to import values inside `.env` as an environment variables. Since this file can have sensitive data, make sure to never commit it. The filename is included in the `.gitingore` so you should be fine. You can learn more about dotenv [**here**](https://github.com/motdotla/dotenv#faq).
+At runtime, the application uses [**dotenv**](https://github.com/motdotla/dotenv) to import values inside `.env` as environment variables. Since this file can have sensitive data, make sure to never commit it. The filename is included in the `.gitingore` so you should be fine. You can learn more about dotenv [**here**](https://github.com/motdotla/dotenv#faq).
 
 #### Development 
 
