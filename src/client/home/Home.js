@@ -39,7 +39,7 @@ export default class Home extends React.Component {
 
     // check if need initial items
     if (!this.props.home.items.length) {
-      console.log('Calling fetching from line 40.');
+      // console.log('Calling fetching from line 40.');
       this.fetchItems();
     }
 
@@ -72,7 +72,7 @@ export default class Home extends React.Component {
       const last = this.lastFetchScrollHeight;
       if (last !== scrollHeight) {
         this.lastFetchScrollHeight = scrollHeight;
-        console.log('Calling fetching from line 72.');
+        // console.log('Calling fetching from line 72.');
         this.fetchItems();
       }
     }

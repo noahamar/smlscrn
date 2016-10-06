@@ -42,7 +42,7 @@ export const fetchMediaItems = (sortBy, genre, page) => {
   return {
     type: actionTypes.FETCH_MEDIA_ITEMS,
     payload: axios.get('/api/shows', params).then(res => {
-      console.log(res);
+      // console.log(res.status);
       return res;
     })
   }

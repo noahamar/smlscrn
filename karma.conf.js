@@ -15,6 +15,12 @@ module.exports = function(config) {
 
     frameworks: ['mocha', 'sinon'],
 
+    // port: 3001,
+
+    // proxies: {
+    //   '/api': 'http://localhost:3001/api'
+    // },
+
     // Point karma at the tests.webpack.js
     files: [
       'tests.webpack.js'
@@ -48,14 +54,29 @@ module.exports = function(config) {
               'plugins': [
                 'transform-react-remove-prop-types',
                 'transform-react-constant-elements',
-                'transform-react-inline-elements'
+                'transform-react-inline-elements',
+                'transform-decorators-legacy'
               ]
             },
             include: path.join(__dirname, 'src', 'client'),
             exclude: path.join(__dirname, '/node_modules/')
           },
-          { test: /\.json$/, loader: 'json-loader' },
-          { test: /\.css$/, loader: 'null-loader' }
+          { 
+            test: /\.json$/, 
+            loader: 'json-loader' 
+          },
+          { 
+            test: /\.css$/, 
+            loader: 'null-loader' 
+          },
+          {
+            test: /\.styl$/,
+            loader: 'null-loader' 
+          },
+          {
+            test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ico)$/,
+            loader: 'null-loader' 
+          },
         ],
       },
       externals: {
@@ -65,7 +86,7 @@ module.exports = function(config) {
         'react/lib/ReactContext': true
       },
       resolve: {
-        extensions: ['', '.js', '.jsx', '.css'],
+        extensions: ['', '.js', '.jsx', '.css', '.styl'],
         modulesDirectories: [
           'src', 'node_modules'
         ]
@@ -102,5 +123,8 @@ module.exports = function(config) {
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
+    stylus: {
+      use: [require('nib')()],
+    }
   });
 };
