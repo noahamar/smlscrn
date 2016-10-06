@@ -61,7 +61,7 @@ Smlscrn is a [Node.js](https://nodejs.org/en/) based application. Here are the k
 - [**Stylus**](http://stylus-lang.com/) CSS preprocessing for expressive, dynamic styling. 
 - [**BEM**](http://getbem.com/) methodology for modular styling.
 - [**Ramda**](http://ramdajs.com/) for practical, functional Javascript.
-- [**Karma**](https://karma-runner.github.io/)/[**Mocha**](https://mochajs.org/)/[**Chai**](http://chaijs.com/)/[**Enzyme**](http://airbnb.io/enzyme/) for running unit tests.
+- [**Karma**](https://karma-runner.github.io/)/[**Mocha**](https://mochajs.org/)/[**Chai**](http://chaijs.com/)/[**Enzyme**](http://airbnb.io/enzyme/) for unit testing.
 - [**Domain-driven**](http://marmelab.com/blog/2015/12/17/react-directory-structure.html) project structure for easier reusability, maintainability, and scalability.
 
 
