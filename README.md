@@ -4,10 +4,6 @@
 
 ![Home](http://i.imgur.com/DzUOOp6.jpg "Home")
 
-### Live demo
-
-You can see a live demo here: **https://smlscrn-app.appspot.com**
-
 
 ## Deployment
 
